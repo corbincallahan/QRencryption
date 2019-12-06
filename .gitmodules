@@ -1,0 +1,6 @@
+[submodule "python-zxing"]
+	path = python-zxing
+	url = https://github.com/oostendo/python-zxing.git
+[submodule "zxing-master"]
+	path = zxing-master
+	url = https://github.com/zxing/zxing.git
