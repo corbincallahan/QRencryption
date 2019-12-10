@@ -1,6 +1,7 @@
 import ReadQR
 import Camera
 import webbrowser
+import Encryptor
 from time import sleep
 
 if __name__ == '__main__':
@@ -11,9 +12,15 @@ if __name__ == '__main__':
         code = ReadQR.read("qr.jpg")
         sleep(0.25)
 
-    print(code)
-    key = input("Enter key: ")
+    print("Encrypted: " + code)
+    key = int(input("Enter key: "))
 
-    # decryption stuff
+    code = code.split(',')
+    code[0] = Encryptor.stringToInt(code[0])
+    code[1] = Encryptor.stringToInt(code[1])
+    decrypted = Encryptor.elGamalDecrypt(code[0], code[1], key)
+    decrypted = Encryptor.intToString(decrypted)
+    print("Decrypted: " + decrypted)
 
-    webbrowser.open(code)
+
+    webbrowser.open(decrypted)
